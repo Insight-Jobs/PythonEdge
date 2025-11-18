@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "a9e8b7c0-1234-4567-89ab-cdef01234567",
+		"name": "Insight Jobs - Controle de Acesso",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"description": "Coleção de rotas da API Flask do projeto Insight Jobs para monitoramento do sistema de controle de acesso."
+	},
+	"item": [
+		{
+			"name": "Último Acesso",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/ultimo_acesso",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"ultimo_acesso"
+					]
+				},
+				"description": "Retorna os detalhes do último acesso processado pelo sistema (ID, status, nome, departamento, timestamp)."
+			},
+			"response": []
+		},
+		{
+			"name": "Histórico Recente (Últimos 10)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/historico_recente",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"historico_recente"
+					]
+				},
+				"description": "Retorna uma lista com os 10 acessos mais recentes para exibição na interface web."
+			},
+			"response": []
+		},
+		{
+			"name": "Estatísticas de Acesso",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/estatisticas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"estatisticas"
+					]
+				},
+				"description": "Retorna o total de acessos, o número de acessos liberados e o número de acessos negados."
+			},
+			"response": []
+		},
+		{
+			"name": "Listar IDs Autorizados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/listar_autorizados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"listar_autorizados"
+					]
+				},
+				"description": "Retorna a lista completa de IDs autorizados cadastrados no sistema."
+			},
+			"response": []
+		},
+		{
+			"name": "Histórico Completo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/historico",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"historico"
+					]
+				},
+				"description": "Retorna o histórico completo de todas as tentativas de acesso registradas."
+			},
+			"response": []
+		}
+	]
+}
