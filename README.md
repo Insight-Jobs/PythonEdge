@@ -68,7 +68,10 @@ Este projeto utiliza um conjunto de tecnologias modernas para simular um ambient
 | **Frontend** | **HTML5, CSS3, JavaScript** | Tecnologias padrão para a construção da interface de monitoramento web. |
 | | **CORS** | Configuração no Flask para permitir a comunicação entre o frontend e o backend. |
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> cef180e9715d9dc2d0965c0b12e531ca8034341c
 
 ## 🛠️ Passo a Passo para Teste
 
