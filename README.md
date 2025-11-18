@@ -4,7 +4,18 @@ O projeto **Insight Jobs** é um sistema de controle de acesso inteligente que i
 
 O objetivo principal é simular um sistema robusto onde um dispositivo de campo (ESP32) envia uma identificação (ID) para a nuvem (FIWARE), e um sistema de backend (API Flask) consome essa informação, processa a lógica de acesso (liberado ou negado) e, em seguida, atualiza o contexto no FIWARE, que pode ser lido de volta pelo dispositivo ou visualizado em uma interface de monitoramento.
 
+## 👥 Integrantes do Grupo
+
+O projeto foi desenvolvido pelos seguintes membros do grupo:
+
+| Nome | RM |
+| :--- | :--- |
+| Kelwin Silva | 566348 |
+| Pedro Almeida | 564711 |
+| João Paulo | 565383 |
 ## ⚙️ Arquitetura do Sistema
+
+![Diagrama de Arquitetura do Sistema](public/assets/arquitetura.png)
 
 A solução é dividida em três componentes principais que interagem de forma assíncrona através do FIWARE Orion Context Broker:
 
@@ -57,15 +68,7 @@ Este projeto utiliza um conjunto de tecnologias modernas para simular um ambient
 | **Frontend** | **HTML5, CSS3, JavaScript** | Tecnologias padrão para a construção da interface de monitoramento web. |
 | | **CORS** | Configuração no Flask para permitir a comunicação entre o frontend e o backend. |
 
-## 👥 Integrantes do Grupo
 
-O projeto foi desenvolvido pelos seguintes membros do grupo:
-
-| Nome | RM |
-| :--- | :--- |
-| Kelwin Silva | 566348 |
-| Pedro Almeida | 564711 |
-| João Paulo | 565383 |
 
 ## 🛠️ Passo a Passo para Teste
 
@@ -99,7 +102,7 @@ O código do ESP32 simula o envio do ID de acesso.
 1.  **Acessar o Wokwi:** O código fornecido é para o simulador Wokwi. Você pode acessar a simulação completa aqui: [Simulação Wokwi do ESP32](https://wokwi.com/projects/447327698107496449). Você pode criar um novo projeto ESP32 e colar o código `wokwi: #include <Wire.h> ...` no arquivo `main.ino`.
 2.  **Verificar o Circuito:** O circuito deve incluir um **ESP32** e um **LCD I2C 16x2**, conforme a imagem de referência:
 
-    ![Diagrama de Conexão do ESP32 com LCD I2C no Wokwi](https://private-us-east-1.manuscdn.com/sessionFile/8U7qjkfkejeOAnWSV3sIjT/sandbox/fD6V5k8bRcYwn0IoKmPRHP-images_1763448768594_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC93b2t3aV9jaXJjdWl0bw.png?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvOFU3cWprZmtlamVPQW5XU1Yzc0lqVC9zYW5kYm94L2ZENlY1azhiUmNZd24wSW9LbVBSSFAtaW1hZ2VzXzE3NjM0NDg3Njg1OTRfbmExZm5fTDJodmJXVXZkV0oxYm5SMUwzVndiRzloWkM5M2IydDNhVjlqYVhKamRXbDBidy5wbmciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=ckRV7TaeLGoOt7gMrzxb8pUb265Qvle4GSFC0B0S2b7G9l6QNhiDOceeitanwIzUzmvKsrY~k8nGe7i1HiCcmulA2Pkt9qvY7nKRFiEH9EnGKMg~tL5RHUgw83zpYLPWGU6JNBIbRd0XylBE-AAGsxKgGCaay7RZkm1we9FrZIS3ZgH-XCrxxo1y7LU93FM66VicfIJFGWoa9XWjORILiL3CEiExXpGRUYHiqIFzmQ6DziXJHBQA1fQ2dLJCLFGYslk7cGKccfLQm6pWDKNVenykGHz9xrlaWjWv4eNp1MFBB3FlkhD6Vp64qURKeT1uIHzUgXm8b35XaOE0QEThyg__)
+    ![Diagrama de Conexão do ESP32 com LCD I2C no Wokwi](public/assets/lcd.png)
 
 3.  **Iniciar a Simulação:** Clique no botão "Start Simulation". O ESP32 irá se conectar à rede `Wokwi-GUEST`.
 4.  **Enviar IDs de Teste:** Use o **Monitor Serial** do Wokwi para enviar os IDs.
@@ -109,7 +112,7 @@ O código do ESP32 simula o envio do ID de acesso.
 
     O LCD exibirá o ID enviado, e o Monitor Serial mostrará o status da requisição HTTP para o FIWARE (espera-se um `Status Orion: 204` para sucesso).
 
-    ![Saída do Monitor Serial no Wokwi](https://private-us-east-1.manuscdn.com/sessionFile/8U7qjkfkejeOAnWSV3sIjT/sandbox/fD6V5k8bRcYwn0IoKmPRHP-images_1763448768595_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC93b2t3aV9zZXJpYWxfb3V0cHV0.png?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvOFU3cWprZmtlamVPQW5XU1Yzc0lqVC9zYW5kYm94L2ZENlY1azhiUmNZd24wSW9LbVBSSFAtaW1hZ2VzXzE3NjM0NDg3Njg1OTVfbmExZm5fTDJodmJXVXZkV0oxYm5SMUwzVndiRzloWkM5M2IydDNhVjl6WlhKcFlXeGZiM1YwY0hWMC5wbmciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=N4Xxp6LNyC9vmCpCE6qO0PhGxjs0sEgWpen-Cs6Dy0lfgiwB3WcNokhSAVzQAFH4RqPY9oSCgs0dkT7MmlaPyN9zJ0KunC41VPj6qZ9r5BLEFsW0LCxMzmTSBvZuWfxiUxIh4ts2ecMZYQo7XYby2LdRURulCAjYJmdjyIDOp~jKG224eK6Or-BXuLXMnhJiZhwOQR5sD7BjvYUwmt85wswL48zH05dq51GJ51zvr-b30NfTRfZ1nAVupDU9952nfTvSYufiqydAT7Vt7yUWyONpA2SWYtTR8yhmrlPZVLCKPjVt7o6kaF8pHLt5wY~rY3KOH1kDpBWFwL9W5sFHvg__)
+    ![Saída do Monitor Serial no Wokwi](public/assets/terminal.png)
 
 ### 3. Verificação do Resultado
 
