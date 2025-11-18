@@ -4,6 +4,16 @@ O projeto **Insight Jobs** é um sistema de controle de acesso inteligente que i
 
 O objetivo principal é simular um sistema robusto onde um dispositivo de campo (ESP32) envia uma identificação (ID) para a nuvem (FIWARE), e um sistema de backend (API Flask) consome essa informação, processa a lógica de acesso (liberado ou negado) e, em seguida, atualiza o contexto no FIWARE, que pode ser lido de volta pelo dispositivo ou visualizado em uma interface de monitoramento.
 
+## 👥 Integrantes do Grupo
+
+O projeto foi desenvolvido pelos seguintes membros do grupo:
+
+| Nome | RM |
+| :--- | :--- |
+| Kelwin Silva | 566348 |
+| Pedro Almeida | 564711 |
+| João Paulo | 565383 |
+
 ## ⚙️ Arquitetura do Sistema
 
 A solução é dividida em três componentes principais que interagem de forma assíncrona através do FIWARE Orion Context Broker:
@@ -39,15 +49,7 @@ Este projeto utiliza um conjunto de tecnologias modernas para simular um ambient
 | **Frontend** | **HTML5, CSS3, JavaScript** | Tecnologias padrão para a construção da interface de monitoramento web. |
 | | **CORS** | Configuração no Flask para permitir a comunicação entre o frontend e o backend. |
 
-## 👥 Integrantes do Grupo
 
-O projeto foi desenvolvido pelos seguintes membros do grupo:
-
-| Nome | RM |
-| :--- | :--- |
-| Kelwin Silva | 566348 |
-| Pedro Almeida | 564711 |
-| João Paulo | 565383 |
 
 ## 🛠️ Passo a Passo para Teste
 
