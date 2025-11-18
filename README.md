@@ -4,16 +4,6 @@ O projeto **Insight Jobs** é um sistema de controle de acesso inteligente que i
 
 O objetivo principal é simular um sistema robusto onde um dispositivo de campo (ESP32) envia uma identificação (ID) para a nuvem (FIWARE), e um sistema de backend (API Flask) consome essa informação, processa a lógica de acesso (liberado ou negado) e, em seguida, atualiza o contexto no FIWARE, que pode ser lido de volta pelo dispositivo ou visualizado em uma interface de monitoramento.
 
-## 👥 Integrantes do Grupo
-
-O projeto foi desenvolvido pelos seguintes membros do grupo:
-
-| Nome | RM |
-| :--- | :--- |
-| Kelwin Silva | 566348 |
-| Pedro Almeida | 564711 |
-| João Paulo | 565383 |
-
 ## ⚙️ Arquitetura do Sistema
 
 A solução é dividida em três componentes principais que interagem de forma assíncrona através do FIWARE Orion Context Broker:
@@ -35,6 +25,24 @@ A solução é dividida em três componentes principais que interagem de forma a
 
 ## 💻 Tecnologias Utilizadas
 
+### Rotas da API (Flask)
+
+A API Flask expõe as seguintes rotas para monitoramento e consulta de dados. Você pode testá-las usando a coleção do Postman anexada.
+
+| Rota | Método | Descrição |
+| :--- | :--- | :--- |
+| `/api/ultimo_acesso` | `GET` | Retorna os detalhes do último acesso processado (ID, status, nome, departamento, timestamp). |
+| `/api/historico_recente` | `GET` | Retorna os 10 acessos mais recentes. |
+| `/api/estatisticas` | `GET` | Retorna o total de acessos, liberados e negados. |
+| `/listar_autorizados` | `GET` | Retorna a lista completa de IDs autorizados. |
+| `/historico` | `GET` | Retorna o histórico completo de todas as tentativas de acesso. |
+
+**Coleção Postman:** [Download da Coleção Postman](InsightJobs_Postman_Collection.json)
+
+---
+
+
+
 Este projeto utiliza um conjunto de tecnologias modernas para simular um ambiente de IoT completo:
 
 | Categoria | Tecnologia | Descrição |
@@ -49,7 +57,15 @@ Este projeto utiliza um conjunto de tecnologias modernas para simular um ambient
 | **Frontend** | **HTML5, CSS3, JavaScript** | Tecnologias padrão para a construção da interface de monitoramento web. |
 | | **CORS** | Configuração no Flask para permitir a comunicação entre o frontend e o backend. |
 
+## 👥 Integrantes do Grupo
 
+O projeto foi desenvolvido pelos seguintes membros do grupo:
+
+| Nome | RM |
+| :--- | :--- |
+| Kelwin Silva | 566348 |
+| Pedro Almeida | 564711 |
+| João Paulo | 565383 |
 
 ## 🛠️ Passo a Passo para Teste
 
@@ -80,10 +96,10 @@ O backend é responsável pela lógica de acesso e pela interface de monitoramen
 
 O código do ESP32 simula o envio do ID de acesso.
 
-1.  **Acessar o Wokwi:** O código fornecido é para o simulador Wokwi. Você pode criar um novo projeto ESP32 e colar o código `wokwi: #include <Wire.h> ...` no arquivo `main.ino`.
+1.  **Acessar o Wokwi:** O código fornecido é para o simulador Wokwi. Você pode acessar a simulação completa aqui: [Simulação Wokwi do ESP32](https://wokwi.com/projects/447327698107496449). Você pode criar um novo projeto ESP32 e colar o código `wokwi: #include <Wire.h> ...` no arquivo `main.ino`.
 2.  **Verificar o Circuito:** O circuito deve incluir um **ESP32** e um **LCD I2C 16x2**, conforme a imagem de referência:
 
-    ![Diagrama de Conexão do ESP32 com LCD I2C no Wokwi](https://private-us-east-1.manuscdn.com/sessionFile/8U7qjkfkejeOAnWSV3sIjT/sandbox/zh9M7CyNkmLoQACshmefcz-images_1763448042719_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC93b2t3aV9jaXJjdWl0bw.png?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvOFU3cWprZmtlamVPQW5XU1Yzc0lqVC9zYW5kYm94L3poOU03Q3lOa21Mb1FBQ3NobWVmY3otaW1hZ2VzXzE3NjM0NDgwNDI3MTlfbmExZm5fTDJodmJXVXZkV0oxYm5SMUwzVndiRzloWkM5M2IydDNhVjlqYVhKamRXbDBidy5wbmciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=FGgrAYnX7B2WRi~qxkJ8vCYBXfh0VJmVSNqvmwzuUTz5hJ9LSEyJkBv1daKMQhh9PI9Jv7W6Oy3oJor3rcSKJIEOXswj45oxi1T8kmUyCKyaK1d4s-~xvMxIWSqU0EyjIU9eyNDajrJNBmcjUNTpKrGcY3EjYkZLpzUKxWrDirID-tIAd0jsW4DsQB8cz0EGyK4ZrCrcFb4VZCv5Gdi10dA75FleQ0h3FVSYbLAq4kbkn5Zo3d-Wq685e95aXmAUDi93yiw7ZfJEjtNYlLMJLmAZItxskr0LLiCDzB1yQ9fi1LlsgN4r2vKpKWEK-cZBW7g6z6XehMdgZkbTTTPllg__)
+    ![Diagrama de Conexão do ESP32 com LCD I2C no Wokwi](https://private-us-east-1.manuscdn.com/sessionFile/8U7qjkfkejeOAnWSV3sIjT/sandbox/fD6V5k8bRcYwn0IoKmPRHP-images_1763448768594_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC93b2t3aV9jaXJjdWl0bw.png?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvOFU3cWprZmtlamVPQW5XU1Yzc0lqVC9zYW5kYm94L2ZENlY1azhiUmNZd24wSW9LbVBSSFAtaW1hZ2VzXzE3NjM0NDg3Njg1OTRfbmExZm5fTDJodmJXVXZkV0oxYm5SMUwzVndiRzloWkM5M2IydDNhVjlqYVhKamRXbDBidy5wbmciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=ckRV7TaeLGoOt7gMrzxb8pUb265Qvle4GSFC0B0S2b7G9l6QNhiDOceeitanwIzUzmvKsrY~k8nGe7i1HiCcmulA2Pkt9qvY7nKRFiEH9EnGKMg~tL5RHUgw83zpYLPWGU6JNBIbRd0XylBE-AAGsxKgGCaay7RZkm1we9FrZIS3ZgH-XCrxxo1y7LU93FM66VicfIJFGWoa9XWjORILiL3CEiExXpGRUYHiqIFzmQ6DziXJHBQA1fQ2dLJCLFGYslk7cGKccfLQm6pWDKNVenykGHz9xrlaWjWv4eNp1MFBB3FlkhD6Vp64qURKeT1uIHzUgXm8b35XaOE0QEThyg__)
 
 3.  **Iniciar a Simulação:** Clique no botão "Start Simulation". O ESP32 irá se conectar à rede `Wokwi-GUEST`.
 4.  **Enviar IDs de Teste:** Use o **Monitor Serial** do Wokwi para enviar os IDs.
@@ -93,7 +109,7 @@ O código do ESP32 simula o envio do ID de acesso.
 
     O LCD exibirá o ID enviado, e o Monitor Serial mostrará o status da requisição HTTP para o FIWARE (espera-se um `Status Orion: 204` para sucesso).
 
-    ![Saída do Monitor Serial no Wokwi](https://private-us-east-1.manuscdn.com/sessionFile/8U7qjkfkejeOAnWSV3sIjT/sandbox/zh9M7CyNkmLoQACshmefcz-images_1763448042721_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC93b2t3aV9zZXJpYWxfb3V0cHV0.png?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvOFU3cWprZmtlamVPQW5XU1Yzc0lqVC9zYW5kYm94L3poOU03Q3lOa21Mb1FBQ3NobWVmY3otaW1hZ2VzXzE3NjM0NDgwNDI3MjFfbmExZm5fTDJodmJXVXZkV0oxYm5SMUwzVndiRzloWkM5M2IydDNhVjl6WlhKcFlXeGZiM1YwY0hWMC5wbmciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=vTVbecsDGxE~5xs-guk3XVIww41sqcL-eNgiJk914sev8ZvqeUPBTL~vO60~MxXjr~akWdkKpFiafr-kEl5UTHHZWFKWQTFP7lyGZjQzsUT0ajo5yjn6dVGXCdJXGjqIEPM1mR3bv~lz0~6Ftp9Lqw7D~J29N9bTY0avDDxjSi1GpwH0qbMCXKRjReuRxC9y0HXul7MA-6IdLTyK3cf9rnkYlQgwBHEpX3ZU0DMW9yEZG-nT-2dJvHWZ2xZHZKLbZhSnXZqc4K4mwOmwCOk5qWwTGK5~wP9xnv~Smg3DNjW8uPuMlzoTqdVKDOglY0W1ePqOgBvzfqrlaWUpaS5hmQ__)
+    ![Saída do Monitor Serial no Wokwi](https://private-us-east-1.manuscdn.com/sessionFile/8U7qjkfkejeOAnWSV3sIjT/sandbox/fD6V5k8bRcYwn0IoKmPRHP-images_1763448768595_na1fn_L2hvbWUvdWJ1bnR1L3VwbG9hZC93b2t3aV9zZXJpYWxfb3V0cHV0.png?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvOFU3cWprZmtlamVPQW5XU1Yzc0lqVC9zYW5kYm94L2ZENlY1azhiUmNZd24wSW9LbVBSSFAtaW1hZ2VzXzE3NjM0NDg3Njg1OTVfbmExZm5fTDJodmJXVXZkV0oxYm5SMUwzVndiRzloWkM5M2IydDNhVjl6WlhKcFlXeGZiM1YwY0hWMC5wbmciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=N4Xxp6LNyC9vmCpCE6qO0PhGxjs0sEgWpen-Cs6Dy0lfgiwB3WcNokhSAVzQAFH4RqPY9oSCgs0dkT7MmlaPyN9zJ0KunC41VPj6qZ9r5BLEFsW0LCxMzmTSBvZuWfxiUxIh4ts2ecMZYQo7XYby2LdRURulCAjYJmdjyIDOp~jKG224eK6Or-BXuLXMnhJiZhwOQR5sD7BjvYUwmt85wswL48zH05dq51GJ51zvr-b30NfTRfZ1nAVupDU9952nfTvSYufiqydAT7Vt7yUWyONpA2SWYtTR8yhmrlPZVLCKPjVt7o6kaF8pHLt5wY~rY3KOH1kDpBWFwL9W5sFHvg__)
 
 ### 3. Verificação do Resultado
 
@@ -113,3 +129,14 @@ Ao enviar um ID pelo Wokwi, o resultado deve ser instantaneamente refletido em d
 | **Simulação do Circuito Wokwi** | ![Diagrama de Conexão do ESP32 com LCD I2C no Wokwi](public/assets/lcd.png) |
 | **Saída do Monitor Serial (Wokwi)** | ![Saída do Monitor Serial no Wokwi](public/assets/terminal.png) |
 | **Exemplo da Interface Web (Acesso Negado)** | ![Interface Web - Acesso Negado](public/assets/web.png) |
+
+## 📚 Referências
+
+Este projeto foi desenvolvido com base nos seguintes recursos e materiais de apoio:
+
+1.  **Simulação Wokwi do ESP32:** Simulação do circuito e código do ESP32 para envio de dados ao FIWARE.
+    *   URL: <https://wokwi.com/projects/447327698107496449>
+2.  **FIWARE - Repositório de Exemplo:** Repositório do GitHub com exemplos e documentação sobre a integração com o FIWARE.
+    *   URL: <https://github.com/fabiocabrini/fiware>
+3.  **Vídeo sobre FIWARE, IoT e Azure:** Conteúdo de apoio sobre a aplicação de FIWARE em cenários de IoT e integração com plataformas cloud.
+    *   URL: <https://www.linkedin.com/posts/diogopelinsonmoraes_fiware-iot-azure-activity-7362259978176397312-avBS?utm_source=share&utm_medium=member_desktop&rcm=ACoAADjkJAsBeQnHbus5gKtYviOkcfDLyUHVvPA>
